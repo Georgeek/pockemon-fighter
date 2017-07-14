@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <div class="logo__block">
+      <img class="logo" src="./assets/logo.png">
+      Made by Egor Madiarov
+    </div>
     <hello></hello>
   </div>
 </template>
@@ -25,6 +28,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+.logo__block {
+  margin: 5px 10px;
+  text-align: right;
+}
+
+.logo {
+  height: 25px;
 }
 </style>
