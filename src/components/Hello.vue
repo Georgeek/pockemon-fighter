@@ -85,7 +85,7 @@
           При наведении мышкой показывать стрелочку?? Подумать над этим -->
           <div class="small-6 columns">
             <div class="pokemon-actions">
-              <button id="attack" @click="attack">АТТАКА</button>
+              <button id="attack" @click="attack">АТАКА</button>
               <button id="special-attack"@click="specialAttack">УДАР МОЛНИЕЙ</button>
               <button id="heal" @click="heal">ЛЕЧЕНИЕ</button>
               <button id="give-up" @click="giveUp">СДАТЬСЯ</button>
