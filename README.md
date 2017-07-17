@@ -1,6 +1,9 @@
 # pockemon-slayer-project
 
-> Basic Vue.js project. Простая игра битва Покемонов. Стилизована под олдскульную игру на приставке. Стилевой образец тут: https://www.gamerstemple.net/vg/games11/001336/001336s01.jpg
+> Basic Vue.js project. A simple game of the Pokémon battle. Stylized as an old-school game on the console. The style sample [here] (https://www.gamerstemple.net/vg/games11/001336/001336s01.jpg)
+The basis is the library vue.js
+
+> Basic Vue.js project. Простая игра битва Покемонов. Стилизована под олдскульную игру на приставке. Стилевой образец [тут](https://www.gamerstemple.net/vg/games11/001336/001336s01.jpg)
 В основе лежит библиотека vue.js
 
 ## Build Setup
@@ -14,9 +17,3 @@ npm run dev
 
 # build for production with minification
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
