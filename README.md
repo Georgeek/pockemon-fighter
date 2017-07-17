@@ -1,6 +1,7 @@
 # pockemon-slayer-project
 
-> A Vue.js project
+> Basic Vue.js project. Простая игра битва Покемонов. Стилизована под олдскульную игру на приставке. Стилевой образец тут: https://www.gamerstemple.net/vg/games11/001336/001336s01.jpg
+В основе лежит библиотека vue.js
 
 ## Build Setup
 
