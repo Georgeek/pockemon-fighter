@@ -1,101 +1,109 @@
 <template>
   <div class="hello">
-    <!-- Внести Покемонов в 1 блок и задать ему фон полосками и градиентом
-        добавить поляны каждому из Покемонов -->
-    <section class="row">
-      <div class="small-6 columns">
-        <div class="player__block">
-          <div class="player__info">
-            <h1 class="text-center">Charmander</h1>
-            <div class="healthbar">
-                <div class="healthbar__text">HP</div>
-                <div class="healthbar__bar">
-                  <div
-                    class="healthbar__bar--health text-center"
-                    style="margin: 0; color: white;"
-                    :style="{width: enemyHealth + '%'}"
-                    :class="{'green': fullHealthEnemy(), 'orange': underSixtyHealthEnemy(), 'red': underThirtyHealthEnemy()}">
+    <div class="container">
+      <div class="battleground-background"></div>
+      <!-- Внести Покемонов в 1 блок и задать ему фон полосками и градиентом
+          добавить поляны каждому из Покемонов -->
+      <section class="row row--margin-bottom">
+        <div class="small-6 columns">
+          <div class="player__block">
+            <div class="player__info">
+              <h1 class="text-center">Charmander</h1>
+              <div class="healthbar">
+                  <div class="healthbar__text">HP</div>
+                  <div class="healthbar__bar">
+                    <div
+                      class="healthbar__bar--health text-center"
+                      style="margin: 0; color: white;"
+                      :style="{width: enemyHealth + '%'}"
+                      :class="{'green': fullHealthEnemy(), 'orange': underSixtyHealthEnemy(), 'red': underThirtyHealthEnemy()}">
+                    </div>
                   </div>
-                </div>
+              </div>
             </div>
+
+            <div class="player__block--shadow shadow--right"></div>
           </div>
-
-          <div class="player__block--shadow shadow--right"></div>
         </div>
-      </div>
 
-      <div class="small-6 columns">
-            <img src="../assets/charmander.png">
-      </div>
-    </section>
+        <div class="small-6 columns">
+          <img src="../assets/charmander.png">
+          <div class="grass"></div>
+        </div>
+      </section>
 
-    <section class="row">
-      <div class="small-6 columns">
+      <section class="row">
+        <div class="small-6 columns">
+
+          <div class="grass"></div>
           <div class="player">
             <div class="pikachu"></div>
           </div>
-      </div>
+        </div>
 
-      <div class="small-6 columns">
-        <div class="player__block">
-          <div class="player__info">
-            <h1 class="text-center">Pikachu</h1>
-            <div class="healthbar">
-                <div class="healthbar__text">HP</div>
-                <div class="healthbar__bar">
-                  <div
-                    class="healthbar__bar--health text-center"
-                    style="margin: 0; color: white;"
-                    :style="{width: playerHealth + '%'}"
-                    :class="{'green': fullHealthPlayer(), 'orange': underSixtyHealthPlayer(), 'red': underThirtyHealthPlayer()}">
-                    
+        <div class="small-6 columns">
+          <div class="player__block">
+            <div class="player__info">
+              <h1 class="text-center">Pikachu</h1>
+              <div class="healthbar">
+                  <div class="healthbar__text">HP</div>
+                  <div class="healthbar__bar">
+                    <div
+                      class="healthbar__bar--health text-center"
+                      style="margin: 0; color: white;"
+                      :style="{width: playerHealth + '%'}"
+                      :class="{'green': fullHealthPlayer(), 'orange': underSixtyHealthPlayer(), 'red': underThirtyHealthPlayer()}">
+                      
+                    </div>
                   </div>
-                </div>
+              </div>
+              <div class="player__healthbar">
+                {{ playerHealth }} / 100
+              </div>
             </div>
-            <div class="player__healthbar">
-              {{ playerHealth }} / 100
-            </div>
+
+            <div class="player__block--shadow shadow--left"></div>
           </div>
 
-          <div class="player__block--shadow shadow--left"></div>
         </div>
-
-      </div>
-    </section>
-    
-    <section class="row controls" v-if="!gameIsRunning">
-        <div class="small-12 columns">
-            <button id="start-game" @click="startGame">START NEW GAME</button>
-        </div>
-    </section>
-    <section class="row controls" v-else="gameIsRunning">
-        <div class="small-6">
-          <h1>
-            Что сделать Пикачу?
-          </h1> 
-        </div>
-        
-        <!-- Отобразить кнопки Ровно. Вопрос про Пикачу выровнять по центру. Оформить в стиле картинки
-        https://www.gamerstemple.net/vg/games11/001336/001336s01.jpg 
-        При наведении мышкой показывать стрелочку?? Подумать над этим -->
-        <div class="small-6 columns">
-            <button id="attack" @click="attack">АТТАКА</button>
-            <button id="special-attack"@click="specialAttack">УДАР МОЛНИЕЙ</button>
-            <button id="heal" @click="heal">ЛЕЧЕНИЕ</button>
-            <button id="give-up" @click="giveUp">СДАТЬСЯ</button>
-        </div>
-    </section>
-    <section class="row log" v-if="turns.length > 0">
-        <div class="small-12 columns">
-            <ul>
-                <li v-for="turn in turns"
-                    :class="{'player-turn': turn.isPlayer, 'enemy-turn': !turn.isPlayer}"
-                >
-                  {{ turn.text }}
-                </li>
-            </ul>
-        </div>
-    </section>
+      </section>
+      
+      <section class="row controls" v-if="!gameIsRunning">
+          <div class="small-12 columns">
+              <button id="start-game" @click="startGame">НАЧАТЬ БОЙ</button>
+          </div>
+      </section>
+      <section class="row controls" v-else="gameIsRunning">
+          <div class="small-6 flex">
+            <div class="pokemon-question">
+              Что сделать <span class="pokemon-name"> Пикачу</span> ?
+            </div> 
+          </div>
+          
+          <!-- Отобразить кнопки Ровно. Вопрос про Пикачу выровнять по центру. Оформить в стиле картинки
+          https://www.gamerstemple.net/vg/games11/001336/001336s01.jpg 
+          При наведении мышкой показывать стрелочку?? Подумать над этим -->
+          <div class="small-6 columns">
+            <div class="pokemon-actions">
+              <button id="attack" @click="attack">АТТАКА</button>
+              <button id="special-attack"@click="specialAttack">УДАР МОЛНИЕЙ</button>
+              <button id="heal" @click="heal">ЛЕЧЕНИЕ</button>
+              <button id="give-up" @click="giveUp">СДАТЬСЯ</button>
+            </div>
+          </div>
+      </section>
+      <section class="row log" v-if="turns.length > 0">
+          <div class="small-12 columns">
+              <ul>
+                  <li v-for="turn in turns"
+                      :class="{'player-turn': turn.isPlayer, 'enemy-turn': !turn.isPlayer}"
+                  >
+                    {{ turn.text }}
+                  </li>
+              </ul>
+          </div>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -206,9 +214,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  /*.row {
-    margin-bottom: 20px;
-  } */
+  .container {
+    max-width: 62.5rem;
+    margin: 0 auto;
+    padding-top: 50px;
+    border-radius: 5px;
+    position: relative;
+  }
+  .row--margin-bottom {
+    margin-bottom: 40px;
+  }
+  .flex {
+    display: flex;
+  }
   .healthbar {
     align-self: flex-end;
     align-items: center;
@@ -273,7 +291,7 @@ export default {
 
   .shadow--left {
     border-radius: 0 10px 25px 0;
-    left: 65px;
+    left: 58px;
   }
   .shadow--right {
     border-radius: 0 0 0 25px;
@@ -296,8 +314,6 @@ export default {
     right: -60px;
   }
 
-
-  
   .enemy {
     display: flex;
     justify-content: space-around;
@@ -318,9 +334,28 @@ export default {
   h1, h2 {
     align-self: flex-start;
     font-weight: normal;
-    text-transform: uppercase;
     text-shadow: 3px 3px 3px #ccc;
     margin: 0;
+  }
+  .pokemon-question {
+    font-size: 2rem;
+    background: #285069;
+    border: 10px solid #e2bb2d;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 0px 5px #fbe0ff;
+    color: white;
+    flex: 1;
+    padding-top: 2rem;
+    text-shadow: 2px 2px 1px #000;
+  }
+  .pokemon-name {
+    text-transform: uppercase;
+  }
+  .pokemon-actions {
+    background: #f8f8f8;
+    border: 10px solid #868BBD;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 0px 5px #6F6B7E;
   }
   ul {
     list-style-type: none;
@@ -333,18 +368,43 @@ export default {
     color: #42b983;
   }
   .pikachu {
-    background: url(/static/img/pokemon_back.e69c2a6.png);
-    background-position-x: -165px;
-    background-position-y: -247px;
-    background-size: 60em;
+    background: url(../assets/pokemon_back.png);
     height: 163px;
     width: 172px;
+    position: relative;
+    bottom: -3px;
+  }
+  .grass {
+    border-radius: 50%;
+    height: 120px;
+    width: 420px;
+    background: #9bff9d;
+    position: absolute;
+    bottom: -70px;
+    left: 40px;
+    z-index: -1;
+    border: 10px solid rgba(0, 0, 0, 0.1);
+  }
+  .battleground-background {
+    background: linear-gradient(
+                      to bottom,
+                      #68d9ff 10%,
+                      #9effa2,
+                      #e0ffe3
+                    );
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
   .controls, .log {
-    border: 1px solid #ccc;
-    box-shadow: 0px 3px 6px #ccc;
-    padding: 10px;
+    border: 7px solid #424242;
+    box-shadow: 0px 3px 6px #424242;
     text-align: center;
+    background: #424242;
+    display: flex;
   }
   .turn {
     font-size: 22px;
@@ -383,5 +443,8 @@ export default {
   }
   .orange {
     background: orange;
+  }
+  .small-6 {
+    position: relative;
   }
 </style>
